@@ -8,7 +8,8 @@ import {
   BarChart3, 
   Settings,
   Code,
-  X
+  X,
+  Home
 } from 'lucide-react';
 import { useLocation, Link } from 'react-router-dom';
 
@@ -18,17 +19,16 @@ interface DashboardSidebarProps {
 }
 
 const navItems = [
+  { name: 'Home', icon: Home, path: '/' },
   { name: 'Overview', icon: LayoutDashboard, path: '/dashboard' },
-  { name: 'Cognitive Metrics', icon: Brain, path: '/dashboard/metrics' },
-  { name: 'Goals', icon: Target, path: '/dashboard/goals' },
-  { name: 'Activity', icon: Activity, path: '/dashboard/activity' },
-  { name: 'Wellness', icon: Heart, path: '/dashboard/wellness' },
-  { name: 'Analytics', icon: BarChart3, path: '/dashboard/analytics' },
+  { name: 'Analytics', icon: BarChart3, path: '/analytics' },
+  { name: 'Goals', icon: Target, path: '/dashboard' },
+  { name: 'Wellness', icon: Heart, path: '/dashboard' },
 ];
 
 const adminItems = [
-  { name: 'Developer Console', icon: Code, path: '/dashboard/admin' },
-  { name: 'Settings', icon: Settings, path: '/dashboard/settings' },
+  { name: 'Developer Console', icon: Code, path: '/dev-console' },
+  { name: 'Settings', icon: Settings, path: '/settings' },
 ];
 
 export const DashboardSidebar = ({ isOpen, onClose }: DashboardSidebarProps) => {

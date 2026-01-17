@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Home, BarChart3, Target, Settings, MessageSquare } from 'lucide-react';
+import { Home, BarChart3, Target, Settings, Brain } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 interface NavItem {
@@ -9,11 +9,11 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { icon: Home, label: 'Home', path: '/dashboard' },
+  { icon: Home, label: 'Home', path: '/' },
+  { icon: Brain, label: 'Dashboard', path: '/dashboard' },
   { icon: BarChart3, label: 'Analytics', path: '/analytics' },
   { icon: Target, label: 'Goals', path: '/dashboard' },
-  { icon: MessageSquare, label: 'AI Chat', path: '/dashboard' },
-  { icon: Settings, label: 'Settings', path: '/dev-console' },
+  { icon: Settings, label: 'Settings', path: '/settings' },
 ];
 
 export const MobileNav = () => {

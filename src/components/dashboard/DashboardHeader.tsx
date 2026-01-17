@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Brain, LogOut, Settings, User, Menu } from 'lucide-react';
+import { Brain, LogOut, Settings, User, Menu, Home } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useProfile } from '@/hooks/useProfile';
 import { useState } from 'react';
@@ -68,20 +69,30 @@ export const DashboardHeader = ({ onMenuToggle }: DashboardHeaderProps) => {
               className="absolute right-0 top-full mt-2 w-48 glass-card rounded-xl overflow-hidden z-50"
             >
               <div className="p-2">
-                <a
-                  href="/dashboard/profile"
+                <Link
+                  to="/"
                   className="flex items-center gap-3 px-4 py-2 rounded-lg text-foreground hover:bg-primary/10 transition-colors"
+                  onClick={() => setShowDropdown(false)}
+                >
+                  <Home className="w-4 h-4" />
+                  Home
+                </Link>
+                <Link
+                  to="/settings"
+                  className="flex items-center gap-3 px-4 py-2 rounded-lg text-foreground hover:bg-primary/10 transition-colors"
+                  onClick={() => setShowDropdown(false)}
                 >
                   <User className="w-4 h-4" />
                   Profile
-                </a>
-                <a
-                  href="/dashboard/settings"
+                </Link>
+                <Link
+                  to="/settings"
                   className="flex items-center gap-3 px-4 py-2 rounded-lg text-foreground hover:bg-primary/10 transition-colors"
+                  onClick={() => setShowDropdown(false)}
                 >
                   <Settings className="w-4 h-4" />
                   Settings
-                </a>
+                </Link>
                 <button
                   onClick={signOut}
                   className="w-full flex items-center gap-3 px-4 py-2 rounded-lg text-destructive hover:bg-destructive/10 transition-colors"

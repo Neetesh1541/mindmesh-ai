@@ -1,7 +1,17 @@
 import { motion } from 'framer-motion';
-import { Brain, Sparkles, ArrowRight, Play } from 'lucide-react';
+import { Brain, Sparkles, ArrowRight, Play, Mic } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export const HeroSection = () => {
+  const [isListening, setIsListening] = useState(false);
+
+  const handleVoiceDemo = () => {
+    setIsListening(true);
+    // Simulate voice AI demo
+    setTimeout(() => setIsListening(false), 3000);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12">
       <div className="max-w-7xl mx-auto w-full">
@@ -49,16 +59,62 @@ export const HeroSection = () => {
               transition={{ delay: 0.4 }}
               className="flex flex-wrap gap-4"
             >
-              <a href="/auth" className="btn-cyber flex items-center gap-2 text-lg">
+              <Link to="/auth" className="btn-cyber flex items-center gap-2 text-lg">
                 <span className="relative z-10">Start Free</span>
                 <ArrowRight className="w-5 h-5 relative z-10" />
-              </a>
-              <a href="/dashboard" className="btn-glass flex items-center gap-2 text-lg group">
+              </Link>
+              <Link to="/dashboard" className="btn-glass flex items-center gap-2 text-lg group">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                   <Play className="w-4 h-4 text-primary fill-primary" />
                 </div>
-                <span>Watch Demo</span>
-              </a>
+                <span>Live Demo</span>
+              </Link>
+            </motion.div>
+
+            {/* Voice AI Demo */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <button
+                onClick={handleVoiceDemo}
+                className={`flex items-center gap-3 px-6 py-3 rounded-xl transition-all ${
+                  isListening 
+                    ? 'bg-primary/20 border-2 border-primary' 
+                    : 'glass-card hover:bg-primary/10'
+                }`}
+              >
+                <motion.div
+                  animate={isListening ? { scale: [1, 1.2, 1] } : {}}
+                  transition={{ duration: 0.5, repeat: isListening ? Infinity : 0 }}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                    isListening ? 'bg-primary' : 'bg-primary/20'
+                  }`}
+                >
+                  <Mic className={`w-5 h-5 ${isListening ? 'text-primary-foreground' : 'text-primary'}`} />
+                </motion.div>
+                <div className="text-left">
+                  <p className="font-medium text-foreground">
+                    {isListening ? 'Listening...' : 'Try Voice AI'}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {isListening ? 'Speak your command' : 'Click to experience voice control'}
+                  </p>
+                </div>
+                {isListening && (
+                  <div className="flex items-center gap-1 ml-4">
+                    {[1, 2, 3, 4].map((i) => (
+                      <motion.div
+                        key={i}
+                        className="w-1 bg-primary rounded-full"
+                        animate={{ height: [8, 24, 8] }}
+                        transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.1 }}
+                      />
+                    ))}
+                  </div>
+                )}
+              </button>
             </motion.div>
 
             {/* Stats */}

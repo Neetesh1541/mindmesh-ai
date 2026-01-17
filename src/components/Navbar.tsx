@@ -54,11 +54,11 @@ export const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="#demo" className="btn-glass text-sm">
+            <a href="/dashboard" className="btn-glass text-sm">
               Live Demo
             </a>
-            <a href="#start" className="btn-cyber text-sm">
-              Get Started
+            <a href="/auth" className="btn-cyber text-sm">
+              <span className="relative z-10">Get Started</span>
             </a>
           </div>
 
@@ -97,11 +97,11 @@ export const Navbar = () => {
                   </a>
                 ))}
                 <div className="pt-4 border-t border-border space-y-2">
-                  <a href="#demo" className="block w-full btn-glass text-center">
+                  <a href="/dashboard" className="block w-full btn-glass text-center">
                     Live Demo
                   </a>
-                  <a href="#start" className="block w-full btn-cyber text-center">
-                    Get Started
+                  <a href="/auth" className="block w-full btn-cyber text-center">
+                    <span className="relative z-10">Get Started</span>
                   </a>
                 </div>
               </div>

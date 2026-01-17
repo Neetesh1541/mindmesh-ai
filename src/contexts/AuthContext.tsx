@@ -47,7 +47,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signUp = async (email: string, password: string, fullName?: string) => {
-    const redirectUrl = `${window.location.origin}/dashboard`;
+    // Use origin for redirect - this works with both Lovable preview and Vercel
+    const redirectUrl = window.location.origin;
     
     const { error } = await supabase.auth.signUp({
       email,

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, Menu, X, Zap, BarChart3, Target, Heart, Code, Mic } from 'lucide-react';
+import { Brain, Menu, X, Zap, BarChart3, Target, Heart, Code } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
+import { LanguageSelector } from './LanguageSelector';
 
 const navItems = [
   { name: 'Cognitive Engine', icon: Brain, href: '#cognitive' },
@@ -52,8 +54,10 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons & Theme Controls */}
           <div className="hidden lg:flex items-center gap-3">
+            <LanguageSelector />
+            <ThemeToggle />
             <a href="/dashboard" className="btn-glass text-sm">
               Live Demo
             </a>
